@@ -17,9 +17,9 @@ from tqdm import tqdm
 
 # Constants
 IMG_SIZE = (256, 256)
-BATCH_SIZE = 32
+BATCH_SIZE = 16
 EPOCHS = 10
-SIZE_OF_TRAINING_DATA = 2000
+SIZE_OF_TRAINING_DATA = 10
 
 
 # Load train.csv
@@ -28,7 +28,7 @@ train_df = pd.read_csv('dataset/train.csv').head(SIZE_OF_TRAINING_DATA)
 # Helper function to download and preprocess images
 def get_image(url):
     try:
-        img = Image.open(os.path.join('images/', f"{idx}.jpg"))
+        img = Image.open(os.path.join('image_train/', f"{idx}.jpg"))
         img = img.resize(IMG_SIZE)
         img = img_to_array(img) / 255.0  # Normalize the image
         if img.shape == (*IMG_SIZE, 3):

@@ -26,13 +26,14 @@ def download_image(url, idx):
     return image_path
 
 if __name__ == "__main__":
-    IMAGE_DIR='test_cases/'
+    IMAGE_DIR='image_test/'
     if not os.path.exists(IMAGE_DIR):
         os.makedirs(IMAGE_DIR)
     IMG_SIZE = (128, 128)  # Must match the input size of your trained model
     Start_point = 0
+    end_point = 100
     
-    df = pd.read_csv(os.path.join('dataset/', 'test.csv')).iloc[Start_point:]
+    df = pd.read_csv(os.path.join('dataset/', 'test.csv')).iloc[Start_point:end_point]
     for idx, row in df.iterrows():
         try:
             path = download_image(row['image_link'], idx)
